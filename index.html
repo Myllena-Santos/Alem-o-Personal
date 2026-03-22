@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Alemão Personal Trainer | Treinamento Físico Especializado</title>
+    <!-- Font Awesome para ícones reais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000000;
+            scroll-behavior: smooth;
+        }
+
+        /* Header / Navegação */
+        .navbar {
+            background-color: #000000;
+            padding: 1rem 1.5rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,255,255,0.15);
+            border-bottom: 1px solid #00ffff;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: #00ffff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00ffff;
+        }
+
+        /* Seção Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 60px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: #00ffff;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: #00ffff;
+            color: #000000;
+            padding: 12px 32px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.3s, background 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-cta:hover {
+            background-color: #00cccc;
+            transform: scale(1.05);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Seções */
+        .section {
+            padding: 4rem 0;
+            background-color: #000000;
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            color: #00ffff;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #00ffff;
+            margin: 10px auto 0;
+        }
+
+        /* Seção Sobre - Texto + Foto maior */
+        .about-wrapper {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        .about-text strong {
+            color: #00ffff;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            border: 3px solid #00ffff;
+            box-shadow: 0 10px 30px rgba(0,255,255,0.3);
+            transition: transform 0.3s;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Carrossel para Formação */
+        .carousel-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,255,255,0.2);
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .carousel-caption h3 {
+            color: #00ffff;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .carousel-caption p {
+            font-size: 0.95rem;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,255,255,0.8);
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: #00ffff;
+        }
+
+        .btn-prev {
+            left: 15px;
+        }
+
+        .btn-next {
+            right: 15px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .indicator.active {
+            background: #00ffff;
+        }
+
+        /* Seção Formação - Texto descritivo */
+        .formacao-texto {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .formacao-texto p {
+            font-size: 1.05rem;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        .formacao-texto strong {
+            color: #00ffff;
+        }
+
+        /* Seção Contato - Ícones reais */
+        .social-section {
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 2.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #111;
+            border: 2px solid #00ffff30;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0,255,255,0.4);
+        }
+
+        .icon-whatsapp {
+            color: #25D366;
+        }
+
+        .icon-instagram {
+            color: #E4405F;
+        }
+
+        .icon-youtube {
+            color: #FF0000;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0a0a0a;
+            color: #888;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid #00ffff20;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+        }
+
+        /* Responsividade para Smartphones */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .nav-links {
+                gap: 1.2rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            
+            .hero {
+                min-height: 70vh;
+                margin-top: 85px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+            
+            .btn-cta {
+                padding: 10px 24px;
+                font-size: 0.9rem;
+            }
+            
+            .section {
+                padding: 2.5rem 0;
+            }
+            
+            .section h2 {
+                font-size: 1.8rem;
+            }
+            
+            /* Sobre - empilhar no mobile */
+            .about-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .about-text p {
+                font-size: 0.95rem;
+                text-align: center;
+            }
+            
+            .about-image img {
+                max-width: 320px;
+            }
+            
+            /* Carrossel mobile */
+            .carousel-slide img {
+                height: 280px;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 0.8rem;
+            }
+            
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+            
+            .formacao-texto p {
+                font-size: 0.95rem;
+            }
+            
+            /* Ícones sociais mobile */
+            .social-icons {
+                gap: 1.5rem;
+            }
+            
+            .social-icon {
+                width: 65px;
+                height: 65px;
+                font-size: 2rem;
+            }
+        }
+
+        /* Ajustes para telas muito pequenas */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .social-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+            
+            .carousel-slide img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com atalhos -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">ALEMÃO <span>PERSONAL</span></div>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Alemão Personal Trainer</h1>
+            <p>Transforme seu corpo, eleve sua performance. Treinamento personalizado com metodologia exclusiva.</p>
+            <a href="https://wa.me/5511977606395?text=Olá%20Alemão,%20gostaria%20de%20agendar%20uma%20aula%20experimental!" class="btn-cta" target="_blank">Agende uma aula experimental</a>
+        </div>
+    </section>
+
+    <!-- Seção Sobre com texto + FOTO MAIOR -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2>Sobre</h2>
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <p>Olá, sou <strong>Alemão</strong>, personal trainer com mais de <strong>10 anos de experiência</strong> ajudando pessoas a transformarem suas vidas através do treino personalizado.</p>
+                    <p>Minha metodologia vai além dos exercícios: trabalho <strong>disciplina, motivação e mudança de hábitos</strong>. Cada aluno recebe um planejamento exclusivo, respeitando seus objetivos e limitações.</p>
+                    <p>Seja para <strong>emagrecimento, hipertrofia, condicionamento físico ou reabilitação</strong>, estou aqui para te guiar rumo à melhor versão de si mesmo.</p>
+                    <p>💪 <strong>Vamos juntos nessa jornada?</strong></p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Alemão Personal Trainer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Formação com Carrossel -->
+    <section id="formacao" class="section">
+        <div class="container">
+            <h2>Formação</h2>
+            <div class="formacao-texto">
+                <p><strong>🎓 Bacharel em Educação Física</strong> pela UFMG • <strong>🏅 Certificação Internacional NSCA</strong> • Especialização em <strong>Fisiologia do Exercício e Biomecânica</strong> • Extensão em <strong>Treinamento Corretivo e Reabilitação</strong></p>
+                <p style="margin-top: 10px;">📍 Mais de 10 anos de experiência transformando vidas através do treinamento personalizado de alta performance.</p>
+            </div>
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <button class="carousel-btn btn-prev" onclick="prevSlide()">❮</button>
+                    <button class="carousel-btn btn-next" onclick="nextSlide()">❯</button>
+                    <div class="carousel-slides" id="carouselSlides">
+                        <div class="carousel-slide">
+                            <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Treinamento profissional">
+                            <div class="carousel-caption">
+                                <h3>Treinamento de Alta Performance</h3>
+                                <p>Metodologia avançada para resultados máximos</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Certificações internacionais">
+                            <div class="carousel-caption">
+                                <h3>Certificações Internacionais</h3>
+                                <p>NSCA e especializações globais</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Resultados comprovados">
+                            <div class="carousel-caption">
+                                <h3>Resultados Comprovados</h3>
+                                <p>Transformação física com saúde e disciplina</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicators" id="indicators">
+                    <div class="indicator active" onclick="goToSlide(0)"></div>
+                    <div class="indicator" onclick="goToSlide(1)"></div>
+                    <div class="indicator" onclick="goToSlide(2)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato - Ícones reais das redes sociais -->
+    <section id="contato" class="section social-section">
+        <div class="container">
+            <h2>Contato</h2>
+            <div class="social-icons">
+                <a href="https://wa.me/5511977606395?text=Olá%20Alemão,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações!" class="social-icon icon-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com/alemaopersonaltrainer" class="social-icon icon-instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@alemaopersonaltrainer" class="social-icon icon-youtube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Alemão Personal Trainer. Todos os direitos reservados.</p>
+            <p style="margin-top: 8px; font-size: 0.8rem;">Disciplina, dedicação e resultados reais.</p>
+        </div>
+    </footer>
+
+    <!-- Script do carrossel -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const slidesContainer = document.getElementById('carouselSlides');
+
+        function updateCarousel() {
+            const offset = -currentSlide * 100;
+            slidesContainer.style.transform = `translateX(${offset}%)`;
+            
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Auto-play
+        let autoPlay = setInterval(nextSlide, 5000);
+
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoPlay);
+            });
+            
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoPlay = setInterval(nextSlide, 5000);
+            });
+        }
+    </script>
+</body>
+</html>
